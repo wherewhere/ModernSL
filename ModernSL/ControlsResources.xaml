@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ModernSL;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/CheckBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ComboBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/HyperlinkButton.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ListBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/PasswordBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ProgressBar.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/RadioButton.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/RepeatButton.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/RichTextBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ScrollBar.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ScrollViewer.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/Slider.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/TextBox.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ToggleButton.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/Styles/ToolTip.xaml" />
+        <ResourceDictionary Source="/ModernSL;component/ThemeResources/Light.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

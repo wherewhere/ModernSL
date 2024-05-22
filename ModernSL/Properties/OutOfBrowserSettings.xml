@@ -1,0 +1,7 @@
+<OutOfBrowserSettings ShortName="ModernSL" EnableGPUAcceleration="True" ShowInstallMenuItem="True">
+  <OutOfBrowserSettings.Blurb>Modern styles and controls for your Silverlight applications.</OutOfBrowserSettings.Blurb>
+  <OutOfBrowserSettings.WindowSettings>
+    <WindowSettings Title="ModernSL" Height="802" Width="1026" />
+  </OutOfBrowserSettings.WindowSettings>
+  <OutOfBrowserSettings.Icons />
+</OutOfBrowserSettings>
