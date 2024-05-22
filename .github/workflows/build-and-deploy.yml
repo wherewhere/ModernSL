@@ -23,7 +23,16 @@ jobs:
         uses: microsoft/setup-msbuild@v1
         with:
           msbuild-architecture: x64
-            
+
+      # Install the Silverlight workload
+      - name: Download Silverlight
+        run: curl $env:SourceURL -o "silverlight_sdk.exe"
+        env:
+          SourceURL: https://web.archive.org/web/20190126163602if_/http://download.microsoft.com/download/3/A/3/3A35179D-5C87-4D0A-91EB-BF5FEDC601A4/sdk/silverlight_sdk.exe
+
+      - name: Install Silverlight
+        run: .\silverlight_sdk.exe /q
+
       # Restore the application to populate the obj folder with RuntimeIdentifiers
       - name: Restore the application
         run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
