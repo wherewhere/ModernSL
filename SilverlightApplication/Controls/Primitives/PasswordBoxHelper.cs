@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace SilverlightApplication.Controls.Primitives
 {
@@ -62,7 +61,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnPasswordRevealModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var helper = GetHelperInstance((PasswordBox)d);
+            PasswordBoxHelper helper = GetHelperInstance((PasswordBox)d);
             helper?.UpdateVisualState(true);
         }
 
@@ -89,7 +88,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var passwordBox = (PasswordBox)d;
+            PasswordBox passwordBox = (PasswordBox)d;
             if ((bool)e.NewValue)
             {
                 SetHelperInstance(passwordBox, new PasswordBoxHelper(passwordBox));

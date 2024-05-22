@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Data;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace SilverlightApplication.Controls.Primitives
@@ -43,8 +41,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnClipToBoundsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            FrameworkElement element = d as FrameworkElement;
-            if (element != null)
+            if (d is FrameworkElement element)
             {
                 ClipToBounds(element);
 
@@ -73,17 +70,12 @@ namespace SilverlightApplication.Controls.Primitives
         /// </summary>
         private static void ClipToBounds(FrameworkElement element)
         {
-            if (GetClipToBounds(element))
-            {
-                element.Clip = new RectangleGeometry
+            element.Clip = GetClipToBounds(element)
+                ? new RectangleGeometry
                 {
                     Rect = new Rect(0, 0, element.ActualWidth, element.ActualHeight)
-                };
-            }
-            else
-            {
-                element.Clip = null;
-            }
+                }
+                : (Geometry)null;
         }
 
     }

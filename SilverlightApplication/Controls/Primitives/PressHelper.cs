@@ -25,7 +25,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var element = (UIElement)d;
+            UIElement element = (UIElement)d;
             if ((bool)e.NewValue)
             {
                 element.MouseLeftButtonDown += OnMouseLeftButtonDown;
@@ -109,7 +109,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void UpdateIsPressed(UIElement element, bool isdown, MouseButtonEventArgs e)
         {
-            Rect itemBounds = new Rect(new Point(), element.RenderSize);
+            Rect itemBounds = new(new Point(), element.RenderSize);
 
             if (itemBounds.Contains(e.GetPosition(element)))
             {
@@ -123,7 +123,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void UpdateIsMouseOver(UIElement element, MouseEventArgs e)
         {
-            Rect itemBounds = new Rect(new Point(), element.RenderSize);
+            Rect itemBounds = new(new Point(), element.RenderSize);
 
             if (itemBounds.Contains(e.GetPosition(element)))
             {

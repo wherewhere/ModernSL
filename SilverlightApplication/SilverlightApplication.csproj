@@ -21,7 +21,7 @@
     <XapFilename>SilverlightApplication.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>SilverlightApplication.App</SilverlightAppEntry>
-    <TestPageFileName>SilverlightApplicationTestPage.html</TestPageFileName>
+    <TestPageFileName>index.html</TestPageFileName>
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>
     <EnableOutOfBrowser>true</EnableOutOfBrowser>

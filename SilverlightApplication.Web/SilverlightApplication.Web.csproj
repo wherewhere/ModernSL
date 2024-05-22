@@ -60,8 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Silverlight.js" />
-    <Content Include="SilverlightApplicationTestPage.aspx" />
-    <Content Include="SilverlightApplicationTestPage.html" />
+    <Content Include="index.aspx" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

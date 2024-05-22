@@ -26,8 +26,8 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnPixelHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var rowDefinition = (RowDefinition)d;
-            var pixels = (double)e.NewValue;
+            RowDefinition rowDefinition = (RowDefinition)d;
+            double pixels = (double)e.NewValue;
             if (double.IsNaN(pixels) || double.IsInfinity(pixels))
             {
                 rowDefinition.ClearValue(RowDefinition.HeightProperty);

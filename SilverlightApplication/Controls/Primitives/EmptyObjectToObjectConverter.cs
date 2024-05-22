@@ -51,7 +51,7 @@ namespace SilverlightApplication.Controls.Primitives
         /// <returns>The value to be passed to the target dependency property.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var isEmpty = CheckValueIsEmpty(value);
+            bool isEmpty = CheckValueIsEmpty(value);
 
             // Negate if needed
             if (ConverterTools.TryParseBool(parameter))

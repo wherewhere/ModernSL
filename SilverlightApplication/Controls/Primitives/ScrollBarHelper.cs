@@ -31,9 +31,9 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var scrollBar = (ScrollBar)d;
-            var oldValue = (bool)e.OldValue;
-            var newValue = (bool)e.NewValue;
+            ScrollBar scrollBar = (ScrollBar)d;
+            bool oldValue = (bool)e.OldValue;
+            bool newValue = (bool)e.NewValue;
 
             if (newValue)
             {
@@ -126,7 +126,7 @@ namespace SilverlightApplication.Controls.Primitives
         {
             if ((bool)e.NewValue)
             {
-                var scrollBar = (ScrollBar)sender;
+                ScrollBar scrollBar = (ScrollBar)sender;
                 scrollBar.ApplyTemplate();
                 UpdateVisualState(scrollBar, false);
             }
@@ -134,7 +134,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsMouseOverChanged(object sender, MouseEventArgs e)
         {
-            var scrollBar = (ScrollBar)sender;
+            ScrollBar scrollBar = (ScrollBar)sender;
             if (scrollBar.IsEnabled)
             {
                 UpdateVisualState(scrollBar);
@@ -143,7 +143,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var scrollBar = (ScrollBar)sender;
+            ScrollBar scrollBar = (ScrollBar)sender;
             UpdateVisualState(scrollBar);
         }
 
@@ -154,14 +154,7 @@ namespace SilverlightApplication.Controls.Primitives
             if (scrollBar.IsEnabled)
             {
                 bool autoHide = GetIndicatorMode(scrollBar) != ScrollingIndicatorMode.MouseIndicator;
-                if (autoHide)
-                {
-                    stateName = PressHelper.GetIsMouseOver(scrollBar) ? StateExpanded : StateCollapsed;
-                }
-                else
-                {
-                    stateName = StateExpanded;
-                }
+                stateName = autoHide ? PressHelper.GetIsMouseOver(scrollBar) ? StateExpanded : StateCollapsed : StateExpanded;
             }
             else
             {

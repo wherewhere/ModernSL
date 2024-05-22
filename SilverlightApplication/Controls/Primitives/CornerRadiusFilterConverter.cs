@@ -40,9 +40,9 @@ namespace SilverlightApplication.Controls.Primitives
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var cornerRadius = (CornerRadius)value;
+            CornerRadius cornerRadius = (CornerRadius)value;
 
-            var scale = Scale;
+            double scale = Scale;
             if (!double.IsNaN(scale))
             {
                 cornerRadius.TopLeft *= scale;
@@ -51,14 +51,11 @@ namespace SilverlightApplication.Controls.Primitives
                 cornerRadius.BottomLeft *= scale;
             }
 
-            var filterType = Filter;
-            if (filterType == CornerRadiusFilterKind.TopLeftValue ||
-                filterType == CornerRadiusFilterKind.BottomRightValue)
-            {
-                return GetDoubleValue(cornerRadius, filterType);
-            }
-
-            return Convert(cornerRadius, filterType);
+            CornerRadiusFilterKind filterType = Filter;
+            return filterType is CornerRadiusFilterKind.TopLeftValue or
+                CornerRadiusFilterKind.BottomRightValue
+                ? GetDoubleValue(cornerRadius, filterType)
+                : Convert(cornerRadius, filterType);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -68,14 +65,12 @@ namespace SilverlightApplication.Controls.Primitives
 
         private double GetDoubleValue(CornerRadius radius, CornerRadiusFilterKind filterKind)
         {
-            switch (filterKind)
+            return filterKind switch
             {
-                case CornerRadiusFilterKind.TopLeftValue:
-                    return radius.TopLeft;
-                case CornerRadiusFilterKind.BottomRightValue:
-                    return radius.BottomRight;
-            }
-            return 0;
+                CornerRadiusFilterKind.TopLeftValue => radius.TopLeft,
+                CornerRadiusFilterKind.BottomRightValue => radius.BottomRight,
+                _ => 0,
+            };
         }
     }
 

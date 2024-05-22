@@ -42,7 +42,7 @@ namespace SilverlightApplication.Controls
 
         private static void OnFontFamilyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
+            FontIcon fontIcon = (FontIcon)d;
             if (fontIcon._textBlock != null)
             {
                 fontIcon._textBlock.FontFamily = (FontFamily)e.NewValue;
@@ -72,7 +72,7 @@ namespace SilverlightApplication.Controls
 
         private static void OnFontSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
+            FontIcon fontIcon = (FontIcon)d;
             if (fontIcon._textBlock != null)
             {
                 fontIcon._textBlock.FontSize = (double)e.NewValue;
@@ -105,7 +105,7 @@ namespace SilverlightApplication.Controls
 
         private static void OnFontStyleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
+            FontIcon fontIcon = (FontIcon)d;
             if (fontIcon._textBlock != null)
             {
                 fontIcon._textBlock.FontStyle = (FontStyle)e.NewValue;
@@ -137,7 +137,7 @@ namespace SilverlightApplication.Controls
 
         private static void OnFontWeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
+            FontIcon fontIcon = (FontIcon)d;
             if (fontIcon._textBlock != null)
             {
                 fontIcon._textBlock.FontWeight = (FontWeight)e.NewValue;
@@ -166,7 +166,7 @@ namespace SilverlightApplication.Controls
 
         private static void OnGlyphChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var fontIcon = (FontIcon)d;
+            FontIcon fontIcon = (FontIcon)d;
             if (fontIcon._textBlock != null)
             {
                 fontIcon._textBlock.Text = (string)e.NewValue;

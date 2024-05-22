@@ -1,5 +1,4 @@
-﻿using SilverlightApplication;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace SilverlightApplication.Controls.Primitives
@@ -31,7 +30,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var textBox = (TextBox)d;
+            TextBox textBox = (TextBox)d;
 
             if ((bool)e.NewValue)
             {
@@ -97,7 +96,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsDeleteButtonChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var button = (Button)d;
+            Button button = (Button)d;
 
             if ((bool)e.OldValue)
             {
@@ -140,19 +139,19 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var textBox = (TextBox)sender;
+            TextBox textBox = (TextBox)sender;
             UpdateVisualStates(textBox, GetIsDeleteButtonVisible(textBox));
         }
 
         private static void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var textBox = (TextBox)sender;
+            TextBox textBox = (TextBox)sender;
             UpdateHasText(textBox);
         }
 
         private static void OnDeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
+            Button button = (Button)sender;
             TextBox textBox = button.FindAscendant<TextBox>();
             textBox?.SetValue(TextBox.TextProperty, null);
         }

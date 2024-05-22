@@ -22,12 +22,9 @@ namespace SilverlightApplication.Controls
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            if (value is string s && Enum.TryParse(s, true, out Symbol symbol))
-            {
-                return new SymbolIcon(symbol);
-            }
-
-            throw new InvalidOperationException(value.ToString());
+            return value is string s && Enum.TryParse(s, true, out Symbol symbol)
+                ? (object)new SymbolIcon(symbol)
+                : throw new InvalidOperationException(value.ToString());
         }
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)

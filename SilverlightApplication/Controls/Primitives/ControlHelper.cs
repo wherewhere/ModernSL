@@ -145,17 +145,9 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void UpdateHeaderVisibility(Control control)
         {
-            Visibility visibility;
-
-            if (GetHeaderTemplate(control) != null)
-            {
-                visibility = Visibility.Visible;
-            }
-            else
-            {
-                visibility = IsNullOrEmptyString(GetHeader(control)) ? Visibility.Collapsed : Visibility.Visible;
-            }
-
+            Visibility visibility = GetHeaderTemplate(control) != null
+                ? Visibility.Visible
+                : IsNullOrEmptyString(GetHeader(control)) ? Visibility.Collapsed : Visibility.Visible;
             SetHeaderVisibility(control, visibility);
         }
 
@@ -383,7 +375,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         internal static bool IsNullOrEmptyString(object obj)
         {
-            return obj == null || obj is string s && string.IsNullOrEmpty(s);
+            return obj == null || (obj is string s && string.IsNullOrEmpty(s));
         }
     }
 }

@@ -27,9 +27,9 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var richTextBox = (RichTextBox)d;
-            var oldValue = (bool)e.OldValue;
-            var newValue = (bool)e.NewValue;
+            RichTextBox richTextBox = (RichTextBox)d;
+            bool oldValue = (bool)e.OldValue;
+            bool newValue = (bool)e.NewValue;
             if (newValue)
             {
                 richTextBox.ContentChanged += OnTextChanged;

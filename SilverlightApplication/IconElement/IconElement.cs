@@ -126,7 +126,7 @@ namespace SilverlightApplication.Controls
 
         protected DependencyObject GetVisualParent()
         {
-            var parent = VisualTreeHelper.GetParent(this);
+            DependencyObject parent = VisualTreeHelper.GetParent(this);
 
             while (parent != null)
             {
@@ -141,7 +141,7 @@ namespace SilverlightApplication.Controls
         {
             EnsureLayoutRoot();
 
-            Size stackDesiredSize = new Size();
+            Size stackDesiredSize = new();
             UIElementCollection children = Children;
             Size layoutSlotSize = availableSize;
             bool hasVisibleChild = false;
@@ -171,7 +171,7 @@ namespace SilverlightApplication.Controls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            Rect GetRect(Size size) => new Rect(0, 0, size.Width, size.Height);
+            static Rect GetRect(Size size) => new(0, 0, size.Width, size.Height);
 
             UIElementCollection children = Children;
             Rect rcChild = GetRect(finalSize);

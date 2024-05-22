@@ -32,10 +32,10 @@ namespace SilverlightApplication
                 return element as FrameworkElement;
             }
 
-            var childCount = VisualTreeHelper.GetChildrenCount(element);
+            int childCount = VisualTreeHelper.GetChildrenCount(element);
             for (int i = 0; i < childCount; i++)
             {
-                var result = VisualTreeHelper.GetChild(element, i).FindDescendantByName(name);
+                FrameworkElement result = VisualTreeHelper.GetChild(element, i).FindDescendantByName(name);
                 if (result != null)
                 {
                     return result;
@@ -55,13 +55,12 @@ namespace SilverlightApplication
             where T : DependencyObject
         {
             T retValue = null;
-            var childrenCount = VisualTreeHelper.GetChildrenCount(element);
+            int childrenCount = VisualTreeHelper.GetChildrenCount(element);
 
-            for (var i = 0; i < childrenCount; i++)
+            for (int i = 0; i < childrenCount; i++)
             {
-                var child = VisualTreeHelper.GetChild(element, i);
-                var type = child as T;
-                if (type != null)
+                DependencyObject child = VisualTreeHelper.GetChild(element, i);
+                if (child is T type)
                 {
                     retValue = type;
                     break;
@@ -87,11 +86,11 @@ namespace SilverlightApplication
         public static object FindDescendant(this DependencyObject element, Type type)
         {
             object retValue = null;
-            var childrenCount = VisualTreeHelper.GetChildrenCount(element);
+            int childrenCount = VisualTreeHelper.GetChildrenCount(element);
 
-            for (var i = 0; i < childrenCount; i++)
+            for (int i = 0; i < childrenCount; i++)
             {
-                var child = VisualTreeHelper.GetChild(element, i);
+                DependencyObject child = VisualTreeHelper.GetChild(element, i);
                 if (child.GetType() == type)
                 {
                     retValue = child;
@@ -118,13 +117,12 @@ namespace SilverlightApplication
         public static IEnumerable<T> FindDescendants<T>(this DependencyObject element)
             where T : DependencyObject
         {
-            var childrenCount = VisualTreeHelper.GetChildrenCount(element);
+            int childrenCount = VisualTreeHelper.GetChildrenCount(element);
 
-            for (var i = 0; i < childrenCount; i++)
+            for (int i = 0; i < childrenCount; i++)
             {
-                var child = VisualTreeHelper.GetChild(element, i);
-                var type = child as T;
-                if (type != null)
+                DependencyObject child = VisualTreeHelper.GetChild(element, i);
+                if (child is T type)
                 {
                     yield return type;
                 }
@@ -149,19 +147,13 @@ namespace SilverlightApplication
                 return null;
             }
 
-            var parent = VisualTreeHelper.GetParent(element);
+            DependencyObject parent = VisualTreeHelper.GetParent(element);
 
-            if (parent == null)
-            {
-                return null;
-            }
-
-            if (name.Equals((parent as FrameworkElement)?.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                return parent as FrameworkElement;
-            }
-
-            return parent.FindAscendantByName(name);
+            return parent == null
+                ? null
+                : name.Equals((parent as FrameworkElement)?.Name, StringComparison.OrdinalIgnoreCase)
+                ? parent as FrameworkElement
+                : parent.FindAscendantByName(name);
         }
 
         /// <summary>
@@ -173,19 +165,9 @@ namespace SilverlightApplication
         public static T FindAscendant<T>(this DependencyObject element)
             where T : DependencyObject
         {
-            var parent = VisualTreeHelper.GetParent(element);
+            DependencyObject parent = VisualTreeHelper.GetParent(element);
 
-            if (parent == null)
-            {
-                return null;
-            }
-
-            if (parent is T)
-            {
-                return parent as T;
-            }
-
-            return parent.FindAscendant<T>();
+            return parent == null ? null : parent is T ? parent as T : parent.FindAscendant<T>();
         }
 
         /// <summary>
@@ -196,19 +178,9 @@ namespace SilverlightApplication
         /// <returns>Ascendant control or null if not found.</returns>
         public static object FindAscendant(this DependencyObject element, Type type)
         {
-            var parent = VisualTreeHelper.GetParent(element);
+            DependencyObject parent = VisualTreeHelper.GetParent(element);
 
-            if (parent == null)
-            {
-                return null;
-            }
-
-            if (parent.GetType() == type)
-            {
-                return parent;
-            }
-
-            return parent.FindAscendant(type);
+            return parent == null ? null : parent.GetType() == type ? parent : parent.FindAscendant(type);
         }
 
         /// <summary>
@@ -218,7 +190,7 @@ namespace SilverlightApplication
         /// <returns>A collection of parent elements or null if none found.</returns>
         public static IEnumerable<DependencyObject> FindAscendants(this DependencyObject element)
         {
-            var parent = VisualTreeHelper.GetParent(element);
+            DependencyObject parent = VisualTreeHelper.GetParent(element);
 
             while (parent != null)
             {

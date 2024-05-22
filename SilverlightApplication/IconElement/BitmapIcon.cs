@@ -129,10 +129,10 @@ namespace SilverlightApplication.Controls
         {
             if (_image != null && _opacityMask != null)
             {
-                var uriSource = UriSource;
+                Uri uriSource = UriSource;
                 if (uriSource != null)
                 {
-                    var imageSource = new BitmapImage(uriSource);
+                    BitmapImage imageSource = new(uriSource);
                     _image.Source = imageSource;
                     _opacityMask.ImageSource = imageSource;
                 }

@@ -62,7 +62,7 @@ namespace SilverlightApplication.Controls
         {
             if (_image != null)
             {
-                var source = Source;
+                ImageSource source = Source;
                 if (source != null)
                 {
                     _image.Source = source;

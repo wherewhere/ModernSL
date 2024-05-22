@@ -26,8 +26,8 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnPixelWidthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var columnDefinition = (ColumnDefinition)d;
-            var pixels = (double)e.NewValue;
+            ColumnDefinition columnDefinition = (ColumnDefinition)d;
+            double pixels = (double)e.NewValue;
             if (double.IsNaN(pixels) || double.IsInfinity(pixels))
             {
                 columnDefinition.ClearValue(ColumnDefinition.WidthProperty);

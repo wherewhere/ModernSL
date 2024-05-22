@@ -81,7 +81,7 @@ namespace SilverlightApplication.Controls
         /// <returns>The System.Windows.Size that represents the desired size of the element.</returns>
         protected override Size MeasureOverride(Size constraint)
         {
-            Size stackDesiredSize = new Size();
+            Size stackDesiredSize = new();
             UIElementCollection children = Children;
             Size layoutSlotSize = constraint;
             bool fHorizontal = Orientation == Orientation.Horizontal;
@@ -147,7 +147,7 @@ namespace SilverlightApplication.Controls
         /// </returns>
         protected override Size ArrangeOverride(Size arrangeSize)
         {
-            Rect GetRect(Size size) => new Rect(0, 0, size.Width, size.Height);
+            static Rect GetRect(Size size) => new(0, 0, size.Width, size.Height);
 
             UIElementCollection children = Children;
             bool fHorizontal = Orientation == Orientation.Horizontal;

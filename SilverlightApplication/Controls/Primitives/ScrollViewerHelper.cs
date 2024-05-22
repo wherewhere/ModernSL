@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using System;
+﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,7 +29,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var sv = (ScrollViewer)d;
+            ScrollViewer sv = (ScrollViewer)d;
             if ((bool)e.NewValue)
             {
                 sv.Loaded += OnLoaded;
@@ -73,7 +73,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var sv = (ScrollViewer)sender;
+            ScrollViewer sv = (ScrollViewer)sender;
             sv.ApplyTemplate();
             UpdateVisualState(sv, false);
         }

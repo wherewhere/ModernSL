@@ -4,7 +4,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace SilverlightApplication.Controls.Primitives
 {
@@ -89,7 +88,7 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnDropDownOpened(object sender, object args)
         {
-            var comboBox = (ComboBox)sender;
+            ComboBox comboBox = (ComboBox)sender;
             // We need to know whether the dropDown opens above or below the ComboBox in order to update corner radius correctly.
             // Sometimes TransformToPoint value is incorrect because popup is not fully opened when this function gets called.
             // Use dispatcher to make sure we get correct VerticalOffset.
@@ -101,24 +100,24 @@ namespace SilverlightApplication.Controls.Primitives
 
         private static void OnDropDownClosed(object sender, object args)
         {
-            var comboBox = (ComboBox)sender;
+            ComboBox comboBox = (ComboBox)sender;
             UpdateCornerRadius(comboBox, /*IsDropDownOpen=*/false);
         }
 
         private static void UpdateCornerRadius(ComboBox comboBox, bool isDropDownOpen)
         {
-            var textBoxRadius = ControlHelper.GetCornerRadius(comboBox);
-            var popupRadius = (CornerRadius)(ResourceLookup(comboBox, c_overlayCornerRadiusKey) ?? new CornerRadius(8));
+            CornerRadius textBoxRadius = ControlHelper.GetCornerRadius(comboBox);
+            CornerRadius popupRadius = (CornerRadius)(ResourceLookup(comboBox, c_overlayCornerRadiusKey) ?? new CornerRadius(8));
 
             if (isDropDownOpen)
             {
                 bool isOpenDown = IsPopupOpenDown(comboBox);
-                var cornerRadiusConverter = new CornerRadiusFilterConverter();
+                CornerRadiusFilterConverter cornerRadiusConverter = new();
 
-                var popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
+                CornerRadiusFilterKind popupRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Bottom : CornerRadiusFilterKind.Top;
                 popupRadius = cornerRadiusConverter.Convert(popupRadius, popupRadiusFilter);
 
-                var textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
+                CornerRadiusFilterKind textBoxRadiusFilter = isOpenDown ? CornerRadiusFilterKind.Top : CornerRadiusFilterKind.Bottom;
                 textBoxRadius = cornerRadiusConverter.Convert(textBoxRadius, textBoxRadiusFilter);
             }
 
@@ -166,7 +165,7 @@ namespace SilverlightApplication.Controls.Primitives
         {
             if (control.Resources.Contains(key)) { return control.Resources[key]; }
 
-            var parent = VisualTreeHelper.GetParent(control);
+            DependencyObject parent = VisualTreeHelper.GetParent(control);
 
             while (parent != null)
             {
