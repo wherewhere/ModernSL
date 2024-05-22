@@ -22,7 +22,7 @@ jobs:
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1
         with:
-          msbuild-architecture: x64
+          msbuild-architecture: x86
 
       # Install the Silverlight workload
       - name: Download Silverlight
@@ -32,13 +32,6 @@ jobs:
 
       - name: Install Silverlight
         run: .\silverlight_sdk.exe /q
-
-      - name: Fix Silverlight SDK
-        run: $xmldata = [xml](Get-Content $env:TargetsPath);`
-             $xmldata.Project.UsingTask.SetAttribute("Architecture", "x86");`
-             $xmldata.Save($env:TargetsPath)
-        env:
-          TargetsPath: 'C:\Program Files (x86)\MSBuild\Microsoft\Silverlight\v5.0\Microsoft.Silverlight.Common.targets'
 
       # Restore the application to populate the obj folder with RuntimeIdentifiers
       - name: Restore the application
